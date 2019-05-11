@@ -1,36 +1,65 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { ScrollView, Text, View } from 'react-native';
+import { styles } from './styles';
 
 import './config/DevToolsConfig';
 import './config/ReactotronConfig';
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
-});
+import Post from './Post';
 
 export default class App extends Component {
-  state = {};
+  state = {
+    posts: [
+      {
+        id: 0,
+        title: 'Aprendendo React Native',
+        author: 'Gabriel Batista',
+        text:
+          'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sed suscipit mauris. Curabituid urna volutpat, suscipit ante et, semper elit. Nulla at felis feugiat, eleifend lorem eu, auctor neque.',
+      },
+      {
+        id: 1,
+        title: 'Aprendendo React Native',
+        author: 'Gabriel Batista',
+        text:
+          'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sed suscipit mauris. Curabituid urna volutpat, suscipit ante et, semper elit. Nulla at felis feugiat, eleifend lorem eu, auctor neque.',
+      },
+      {
+        id: 2,
+        title: 'Aprendendo React Native',
+        author: 'Gabriel Batista',
+        text:
+          'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sed suscipit mauris. Curabituid urna volutpat, suscipit ante et, semper elit. Nulla at felis feugiat, eleifend lorem eu, auctor neque.',
+      },
+      {
+        id: 3,
+        title: 'Aprendendo React Native',
+        author: 'Gabriel Batista',
+        text:
+          'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sed suscipit mauris. Curabituid urna volutpat, suscipit ante et, semper elit. Nulla at felis feugiat, eleifend lorem eu, auctor neque.',
+      },
+      {
+        id: 4,
+        title: 'Aprendendo React Native',
+        author: 'Gabriel Batista',
+        text:
+          'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sed suscipit mauris. Curabituid urna volutpat, suscipit ante et, semper elit. Nulla at felis feugiat, eleifend lorem eu, auctor neque.',
+      },
+    ],
+  };
 
   render() {
+    const { posts } = this.state;
     return (
       <View style={styles.container}>
-        <Text style={styles.welcome}>Welcome to React Native!</Text>
-        <Text style={styles.instructions}>To get started, edit App.js</Text>
+        <View style={styles.titleBox}>
+          <Text style={styles.title}>GoNative App</Text>
+        </View>
+        <ScrollView>
+          {posts.map(post => (
+            <Post key={post.id} post={post} />
+          ))}
+        </ScrollView>
       </View>
     );
   }
